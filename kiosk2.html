@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<style >
+  .items li {
+
+  }
+</style>
+
+<div>
+  <ul class="items">
+    <li>
+      <div>단팥빵</div>
+    </li>
+    <li>
+      <div>크로아상</div>
+    </li>
+    <li>
+      <div>딸기마카롱</div>
+    </li>
+    <li>
+      <div>당근케익</div>
+    </li>
+    <li>
+      <div>슈크림빵</div>
+    </li>
+  </ul>
+
+</div>
+
+<div>
+  <ul class="cart" >
+
+  </ul>
+
+</div>
+
+<script>
+  var cart = document.querySelector(".cart")
+
+
+  document.querySelector(".items").addEventListener("click", function (e) {
+
+    console.log(e.target)
+
+    cart.innerHTML += "<li>" + e.target.innerHTML + "<button>X</button></li>";
+  }, false);
+
+  cart.addEventListener("click", function (e) {
+    console.log(e.target)
+
+
+//만일 e.target 이 버튼이었다면
+    if(e.target.matches('button')) {
+      var targetLi = e.target.parentElement
+      console.log(targetLi)
+      cart.removeChild(targetLi)
+    }
+    //버튼을 가지고 있는 <li>태그를 찾고
+    //해당 <li>를 삭제한다.
+  }, false)
+
+</script>
+
+</body>
+</html>

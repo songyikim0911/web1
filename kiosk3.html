@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <ul class="items">
+            <li><div>
+                <span class="menu">빅맥</span>
+                <span class="price">5000</span>
+            </div></li>
+            <li><div>
+                <span class="menu">상하이버거</span>
+                <span class="price">6000</span>
+            </div></li>
+            <li><div>
+                <span class="menu">불고기버거</span>
+                <span class="price">4500</span>
+            </div></li>
+            <li><div>
+                <span class="menu">더블치즈버거</span>
+                <span class="price">6500</span>
+            </div></li>
+        </ul>
+    </div>
+
+
+    <div>
+        <ul class="cart">
+        </ul>
+    </div>
+</div>
+
+<div>
+    <h2 id="total"></h2>
+</div>
+
+
+
+<script>
+        var cart = document.querySelector(".cart")
+        var arr = document.querySelectorAll(".items li")
+        var total = document.querySelector("#total")
+
+        for (var i=0; i < arr.length; i++) {
+            arr[i].addEventListener("click", function (e) {
+                console.log(e)
+                var targetLi = this //이벤트를 건 대상, this
+                var menu = targetLi.querySelector(".menu").innerHTML;
+                var price = targetLi.querySelector(".price").innerHTML;
+
+                console.log(menu,price)
+
+                var str ="<li><span class = 'tmenu'>"+menu+"</span><span class='tprice'>"+price+"</span><button>X</button></li>"
+
+                cart.innerHTML += str;
+
+                makeTotal()
+
+            }, false);
+        }
+
+        cart.addEventListener("click", function(e){
+
+            console.log(e.target)
+
+//만일 e.target 이 버튼이었다면
+            if(e.target.matches('button')) {
+                var targetLi = e.target.parentElement
+                console.log(targetLi)
+                cart.removeChild(targetLi)
+                makeTotal()
+            }
+            //버튼을 가지고 있는 <li>태그를 찾고
+            //해당 <li>를 삭제한다.
+        }, false)
+
+
+        function makeTotal(){
+
+            console.log("-----makeTotal")
+
+            var priceSpans = document.querySelectorAll(".tprice")
+            console.log(priceSpans)
+
+            var sum = 0
+
+            for(var i = 0; i < priceSpans.length; i++){
+                sum+= parseInt(priceSpans[i].innerHTML)
+            }
+            total.innerHTML = sum
+        }
+
+            //
+            // document.querySelector(".items")
+            //     .addEventListener("click", function(e) {
+            //         console.log(this)
+        //li에만 루프를 돌리는 방법 찾기
+
+    /*    if(evt.target.matches("li")){ 이렇게 걸면 아무것도 선택이 안됨.
+            console.log(evt.target) }*/
+
+       // var target = evt.target
+        //var menu = target.querySelector(".menu") 이렇게 걸면, li내에 div/span은 해당이 안되게됨.
+        //console.log(menu)
+   //
+   // },false)
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div>
+  <ul class="items">
+    <li><div>빅맥</div></li>
+    <li><div>상하이버거</div></li>
+    <li><div>불고기버거</div></li>
+    <li><div>치즈버거</div></li>
+    <li><div>후렌치후라이</div></li>
+  </ul>
+</div>
+
+<div>
+  <ul class="cart">
+
+  </ul>
+</div>
+
+<script>
+  var items = document.querySelectorAll(".items li div")
+  var cart = document.querySelector(".cart")
+
+  console.log(items);
+
+
+
+  for(var i = 0; i< items.length; i++){
+    items[i].addEventListener("click", (e) => {
+      var target = e.target
+      var str = target.innerHTML
+      console.log(str)
+      cart.innerHTML += "<li>"+str+"<button>X</button></li>"
+    }, false )
+  }
+
+  function removeFn(event){
+    alert("AAA")
+    var target = event.target.parentNode
+    console.log(target)
+    cart.removeChild(target)
+  }
+</script>
+
+
+</body>
+</html>

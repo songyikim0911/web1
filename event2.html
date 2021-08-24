@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<style>
+  .d3{
+    margin: 50px;
+    background-color: green;
+  }
+
+  .d2{
+    margin: 50px;
+    background-color: deeppink;
+    height: 20vh;
+    text-align: center;
+    align-items: center;
+
+  }
+
+  .d1{
+    margin: 50px;
+    background-color: yellow;
+    height: 40vh;
+
+  }
+</style>
+
+<div class="d1">
+
+  <div class="d2">
+
+    <div class="d3">
+
+      <a href="/test1.html" class="sample">TEST1</a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+  document.querySelector(".sample").addEventListener("click",(e)=>{
+    e.preventDefault(); // 이벤트의 기본 동작을 막는다 (a태그와 폼태그에서 많이 사용)
+  }, false)
+
+  document.querySelector(".d3").addEventListener("click",(e)=> console.log("d3"),false); //캡쳐링 금지
+
+  document.querySelector(".d2").addEventListener("click",(e)=>{
+    e.stopPropagation() // 더 이상 이벤트 전파 안함
+    console.log("d2")
+  },false);
+
+  document.querySelector(".d1").addEventListener("click",(e)=> console.log("d1"),false);
+
+
+
+
+</script>
+
+</body>
+</html>
