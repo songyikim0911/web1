@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<ul>
+  <li>
+    <input type="checkbox" name="box"></input>AAA
+  </li>
+  <li>
+    <input type="checkbox" name="box"></input>BBB
+  </li>
+  <li>
+    <input type="checkbox" name="box"></input>CCC
+  </li>
+  <li>
+    <input type="checkbox" name="box"></input>DDD
+  </li>
+  <li>
+    <input type="checkbox" name="box"></input>EEE
+  </li>
+</ul>
+
+<div id="target">
+
+</div>
+
+<script>
+
+  var arr = document.querySelectorAll("input")
+  console.log(arr)
+
+  for(var i = 0; i < arr.length; i++){
+    arr[i].checked = true
+  }
+
+  var target = document.querySelector("#target")
+
+  target.innerHTML ="<button>AAAA</button>";
+
+  var sample = document.querySelector("input").parentElement;
+//input의 부모인 li를 sample로넣고,
+  var parent = sample.parentElement;
+//sample(li)의 부모인 ul는 parent가 되고
+  parent.removeChild(sample)
+//parent(ul).removechild(자식sample(li))  sample(li)의 child인 li를 삭제 .
+</script>
+
+</body>
+</html>

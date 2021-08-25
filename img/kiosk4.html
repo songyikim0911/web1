@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul class="menus">
+
+</ul>
+
+<div>
+  <ul class="cart">
+
+  </ul>
+  <h3 class="total"></h3>
+</div>
+
+
+<script>
+  const menus = [
+    {name:'빅맥', price: 5000},
+    {name:'상하이버거', price: 5500},
+    {name:'불고기버거', price: 4500},
+    {name:'더블치즈버거', price: 5500},
+  ]
+
+  const cart=[]//상수. 변수가 가르키는 직접적인 내용만 바뀌지 않으면됨.
+
+  const menusDiv = document.querySelector(".menus")
+  const cartDiv = document.querySelector(".cart")
+
+  let str = "";
+
+  for(let i = 0; i < menus.length; i++ ){
+
+    const name= menus[i].name
+    const price = menus[i].price
+
+    str += `<li data-idx="${i}" data-name="${name}" data-price="${price}">${name}<span>${price}</span></li>`//자바스크립트는 , 넣고 싶은 속성을 이렇게 나중에 추가 하는게 가능하다 커스톰 어트리뷰트
+    //한번에 4개의 li태그를 만들어서 한꺼번에 문자열로 바꿔주는것
+  }
+    menusDiv.innerHTML = str
+
+  //이벤트 처리
+  document.querySelector(".menus").addEventListener("click", function(e){// function(e) --> 파라미터로 이벤트 하나(e)를 받음!
+    const targetLi = e.target; //li를 클릭한다고 가정 !
+
+    const idx = targetLi.getAttribute("data-idx")
+
+    if(idx){
+      console.log(idx)
+      refreshCart(menus[idx])
+    }
+    console.log(idx)
+  },false)
+
+  function refreshCart(menu){
+
+    if(menu){//refreshCart의 2가지 경로. menu가 있을때 push를 한다.없으면
+        cart.push(menu)//메뉴가 있을떄만 카트에 푸쉬하는것으로 조건 걸어주기! 즉 파라미터가 없어도 해당 함수를돌게 하고,
+      //파라미터가 있는경우에만 이 함수를 적용하도록.
+    }
+
+    //cart ul 갱신
+    let str ="";
+    //cart안에 있는것들을 뿌리기 위한 루프
+    for(let i = 0 ; i < cart.length; i++){
+      const name = cart[i].name
+      const price = cart[i].price
+      //문자열 만들기 +삭제버튼추가.
+      str += `<li>${name} - ${price}<button data-idx="${i}">X</button></li>`
+    }
+    //cart ul에 담아주기
+    cartDiv.innerHTML = str
+
+  }
+
+   cartDiv.addEventListener("click", function(e){
+
+     const target = e.target
+
+     if(target.matches("button")){
+          const idx = target.getAttribute("data-idx")
+          console.log(idx)
+
+          cart.splice(idx,1)//배열 삭제해주기
+
+          refreshCart() //화면에 다시 리프레시! 바뀐거로 뿌려줘야함.
+     }
+           },false)
+
+
+    const tempArr = [""]
+
+
+
+</script>
+
+</body>
+</html>

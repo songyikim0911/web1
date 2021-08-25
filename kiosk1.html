@@ -35,7 +35,7 @@
         var target = e.target   //target 클릭한애가 누군지 알아내기위함.
         //이벤트가 발생한 div. target은 event의목적어, 이벤트가 어디서 발생했는지 알려줌
         var str = target.innerHTML//이제 아까 클릭하면 나오는것을, 카트에 넣어주는 작업!!2
-        cart.innerHtml += "<li>"+str+"<button>X</button></li>" //카트 넣어주기작업!!3) +=를 이용해 원래있는 innerHtml에 값이 계속 쌓이도록!
+        cart.innerHTML += "<li>"+str+"<button>X</button></li>" //카트 넣어주기작업!!3) +=를 이용해 원래있는 innerHtml에 값이 계속 쌓이도록!
 
       }, false )//e 모든 이벤트는 하나의 파라미터를 받을 수있음..
   }

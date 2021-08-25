@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">CLICK</button>
+
+<script>
+  document.querySelector("#btn").addEventListener("click", function(){
+//동시에 아래 3가지 작업을 시킬 수 있다.
+    //작업을하고있다가, 다 될떈 then을 하라고 미리 명시!~
+    //이렇게되면 서버와 통신.
+    //서버에서 데이터를 다 만들어서 가져올 필요가없음.
+    //모바일에서도 이 데이터를 쓸 수 있다.
+
+    fetch("https://swapi.dev/api/people/1").then(res=> {
+      // fetch를해! fetch를 해서 다 가져온다음에는 then을 해!
+      res.json().then(data=>{//json 데이터 가져오는데 성공하면 console.log를 실행해줘~
+        console.log(data)//자바스크립트가 서버랑 통신해서 데이터를 주고 받을 수 있게 된셈!
+        //데이터도다루고,이벤트도 다루고 만능..ajax를 통해!
+      })
+    })
+
+
+  },false)
+
+</script>
+
+</body>
+</html>

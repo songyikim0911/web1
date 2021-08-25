@@ -52,7 +52,7 @@
   document.querySelector(".d3").addEventListener("click",(e)=> console.log("d3"),false); //캡쳐링 금지
 
   document.querySelector(".d2").addEventListener("click",(e)=>{
-    e.stopPropagation() // 더 이상 이벤트 전파 안함
+    // e.stopPropagation() // 더 이상 이벤트 전파 안함
     console.log("d2")
   },false);
 
