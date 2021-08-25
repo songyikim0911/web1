@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <ul class="items">
+        <li><div>
+            <span class="menu">바닐라마카롱</span>
+            <span class="price">2000</span>
+        </div></li>
+        <li><div>
+            <span class="menu">생크림케이크</span>
+            <span class="price">6000</span>
+        </div></li>
+        <li><div>
+            <span class="menu">초코칩쿠키</span>
+            <span class="price">3000</span>
+        </div></li>
+        <li><div>
+            <span class="menu">딸기우유</span>
+            <span class="price">1000</span>
+        </div></li>
+    </ul>
+</div>
+
+<div>
+    <ul class="cart"></ul>
+    <h3 id="total"></h3>
+</div>
+
+<script>
+
+    var arr = document.querySelectorAll(".items li")
+    var cart = document.querySelector(".cart")
+    var total = document.querySelector("#total")
+
+    for(var i=0; i<arr.length; i++){
+        arr[i].addEventListener("click", function(e){
+            var targetLi = this
+            var menu = targetLi.querySelector(".menu").innerHTML;
+            var price = targetLi.querySelector(".price").innerHTML;
+            var str = "<li><span class = 'tmenu'>"+menu+"</span><span class= 'tprice'>"+price+"</span><button>X</button></li>"
+
+         cart.innerHTML += str;
+            console.log(str)
+
+            makeTotal()
+        },false);
+    }
+
+    cart.addEventListener("click", function(e){
+        if(e.target.matches('button')){
+            var targetLi = e.target.parentElement
+            cart.removeChild(targetLi)
+            makeTotal()
+        }
+    },false)
+
+
+
+
+    function makeTotal(){
+
+        var priceSpans = document.querySelectorAll(".tprice")
+
+        var sum = 0;
+
+        for(var i=0; i < priceSpans.length; i++){
+            sum += parseInt(priceSpans[i].innerHTML)
+        }
+        console.log(sum)
+       total.innerHTML = sum
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>
